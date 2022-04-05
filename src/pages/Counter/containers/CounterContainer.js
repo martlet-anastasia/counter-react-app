@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { CounterView } from "../components/CounterView/index.js";
 
@@ -12,19 +12,14 @@ class CounterComponent extends Component {
     };
   }
 
-  calculateParityType = (state) => {
-    return state.countValue % 2 === 0 ? "even" : "odd";
+  calculateParityType = (countValue) => {
+    return countValue % 2 === 0 ? "even" : "odd";
   };
 
   handleIncrement = () => {
     this.setState((state) => {
       return {
         countValue: state.countValue + 1,
-      };
-    });
-    this.setState((state) => {
-      return {
-        parityType: this.calculateParityType(state),
       };
     });
   };
@@ -35,16 +30,19 @@ class CounterComponent extends Component {
         countValue: state.countValue > 1 ? state.countValue - 1 : 0,
       };
     });
-    this.setState((state) => {
-      return {
-        parityType: this.calculateParityType(state),
-      };
-    });
   };
 
   handleReset = () => {
     this.setState({ countValue: 0, parityType: "even" });
   };
+
+  componentDidUpdate(_, prevState) {
+    if (this.state.countValue !== prevState.countValue) {
+      const parityType = this.calculateParityType(this.state.countValue);
+
+      this.setState({ parityType });
+    }
+  }
 
   render() {
     return (
@@ -62,6 +60,6 @@ class CounterComponent extends Component {
 CounterView.propTypes = {
   countValue: PropTypes.number.isRequired,
   parityType: PropTypes.string.isRequired,
-}
+};
 
 export default CounterComponent;
