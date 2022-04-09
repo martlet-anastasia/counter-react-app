@@ -1,0 +1,12 @@
+@use "/src/scss/colors" as c;
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+
+    color: c.$blue;
+}
+
+h1 {
+    display: inline-block;
+}
