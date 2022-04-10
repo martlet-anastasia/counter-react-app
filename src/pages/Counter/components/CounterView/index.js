@@ -1,27 +1,57 @@
 import styles from "./styles.module.scss";
 
-export const CounterView = ({
+const CounterView = ({
+  id,
   countValue,
-  parityType,
   onIncrement,
   onDecrement,
   onReset,
 }) => {
+  const parityType = countValue % 2 === 0 ? "even" : "odd";
   return (
     <>
-      <div className={`${styles.wrapper} ${parityType === 'odd' && styles.oddBorder}`}>
-        <div className={`${styles.text} ${parityType === 'odd' && styles.oddBorder}`}>{countValue}</div>
-        <div className={`${styles.text} ${parityType === 'odd' && styles.oddBorder}`}>
+      <div
+        className={`${styles.wrapper} ${
+          parityType === "odd" && styles.oddBorder
+        }`}
+      >
+        <div
+          className={`${styles.text} ${
+            parityType === "odd" && styles.oddBorder
+          }`}
+        >
+          {countValue}
+        </div>
+        <div
+          className={`${styles.text} ${
+            parityType === "odd" && styles.oddBorder
+          }`}
+        >
           Введено {parityType === "even" ? "четное" : "нечетное"} число
         </div>
         <div className={styles.buttonContainer}>
-          <button className={`${styles.button} ${parityType === 'odd' && styles.oddButton}`} onClick={onDecrement}>
+          <button
+            className={`${styles.button} ${
+              parityType === "odd" && styles.oddButton
+            }`}
+            onClick={() => onDecrement(id)}
+          >
             -
           </button>
-          <button className={`${styles.button} ${parityType === 'odd' && styles.oddButton}`} onClick={onReset}>
+          <button
+            className={`${styles.button} ${
+              parityType === "odd" && styles.oddButton
+            }`}
+            onClick={() => onReset(id)}
+          >
             Reset
           </button>
-          <button className={`${styles.button} ${parityType === 'odd' && styles.oddButton}`} onClick={onIncrement}>
+          <button
+            className={`${styles.button} ${
+              parityType === "odd" && styles.oddButton
+            }`}
+            onClick={() => onIncrement(id)}
+          >
             +
           </button>
         </div>
@@ -29,3 +59,5 @@ export const CounterView = ({
     </>
   );
 };
+
+export default CounterView;

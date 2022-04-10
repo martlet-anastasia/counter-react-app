@@ -14,7 +14,12 @@ const NavbarView = () => {
         </li>
         <li className={styles.navItem}>
           <Link to={ROUTE_NAMES.COUNTER}>
-            <i className="fas fa-calculator"></i>Counter
+            <i className="fas fa-calculator"></i>Simple Counter
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link to={ROUTE_NAMES.COUNTERS}>
+            <i className="fas fa-calculator"></i>Counter of Counters
           </Link>
         </li>
       </ul>
