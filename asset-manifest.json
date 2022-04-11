@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/martlet-anastasia/counter-react-app/static/css/main.6e1197f8.css",
-    "main.js": "/martlet-anastasia/counter-react-app/static/js/main.519bab4f.js",
-    "index.html": "/martlet-anastasia/counter-react-app/index.html",
-    "main.6e1197f8.css.map": "/martlet-anastasia/counter-react-app/static/css/main.6e1197f8.css.map",
-    "main.519bab4f.js.map": "/martlet-anastasia/counter-react-app/static/js/main.519bab4f.js.map"
+    "main.css": "/counter-react-app/static/css/main.6e1197f8.css",
+    "main.js": "/counter-react-app/static/js/main.37bf24de.js",
+    "index.html": "/counter-react-app/index.html",
+    "main.6e1197f8.css.map": "/counter-react-app/static/css/main.6e1197f8.css.map",
+    "main.37bf24de.js.map": "/counter-react-app/static/js/main.37bf24de.js.map"
   },
   "entrypoints": [
     "static/css/main.6e1197f8.css",
-    "static/js/main.519bab4f.js"
+    "static/js/main.37bf24de.js"
   ]
 }
