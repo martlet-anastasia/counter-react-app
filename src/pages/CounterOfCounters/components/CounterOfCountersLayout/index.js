@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 
 import CounterView from "../../../Counter/components/CounterView";
 
-const CounterOfCountersLayout = ({ listOfCounters, handleCounterAdd, handleCounterRemove, handleDeleteAll, handleIncrement, handleDecrement, handleReset }) => {
+const CounterOfCountersLayout = ({ listOfCounters, handleCounterAdd, handleCounterRemoveLast, handleCounterRemoveAny, handleDeleteAll, handleIncrement, handleDecrement, handleReset }) => {
   return (
     <>
       <div className={styles.controlBtnContainer}>
         <button className={styles.button} onClick={handleCounterAdd}>
           Add Counter
         </button>
-        <button className={styles.button} onClick={handleCounterRemove}>
+        <button className={styles.button} onClick={handleCounterRemoveLast}>
           Remove Counter
         </button>
         <button className={styles.button} onClick={handleDeleteAll}>
@@ -26,7 +26,7 @@ const CounterOfCountersLayout = ({ listOfCounters, handleCounterAdd, handleCount
       </div>
       <div>
         {listOfCounters.map((counter) => {
-          return <CounterView key={counter.id} id={counter.id} countValue={counter.value} onIncrement={handleIncrement} onDecrement={handleDecrement} onReset={handleReset} />;
+          return <CounterView key={counter.id} id={counter.id} countValue={counter.value} onIncrement={handleIncrement} onDecrement={handleDecrement} onReset={handleReset} handleCounterRemoveAny={handleCounterRemoveAny}/>;
         })}
       </div>
     </>

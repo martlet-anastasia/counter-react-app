@@ -22,7 +22,7 @@ const CounterOfCountersContainer = () => {
     });
   }, []);
 
-  const handleCounterRemove = useCallback(() => {
+  const handleCounterRemoveLast = useCallback(() => {
     setListOfCounters((state) => {
       const copy = [...state];
       // each of odd value gets -1
@@ -34,6 +34,23 @@ const CounterOfCountersContainer = () => {
       });
       // delete last element
       copy.pop();
+      return copy;
+    });
+  }, []);
+
+  const handleCounterRemoveAny = useCallback((id) => {
+    setListOfCounters((state) => {
+      const copy = [...state];
+      // each of odd value gets -1
+      copy.map((counter) => {
+        if (!(counter.value === 0 & counter.value % 2 === 0)) {
+            counter.value = counter.value - 1;
+        }
+        return counter;
+      });
+      // delete selected element
+      const counterIndexToDelete = copy.findIndex((counter) => counter.id === id);
+      copy.splice(counterIndexToDelete, 1);
       return copy;
     });
   }, []);
@@ -79,7 +96,8 @@ const CounterOfCountersContainer = () => {
     <CounterOfCountersLayout
       listOfCounters={listOfCounters}
       handleCounterAdd={handleCounterAdd}
-      handleCounterRemove={handleCounterRemove}
+      handleCounterRemoveLast={handleCounterRemoveLast}
+      handleCounterRemoveAny={handleCounterRemoveAny}
       handleDeleteAll={handleDeleteAll}
       handleIncrement={handleIncrement}
       handleDecrement={handleDecrement}
