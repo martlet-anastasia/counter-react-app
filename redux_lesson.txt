@@ -1,0 +1,25 @@
+Redux - менеджер состояния - это его идея, концепт
+store в redux - обычный javascript объект
+
+сущности в Redux store 
+- Actions - действия, должно что-то произойти, чтобы что-то поменлось.
+Это оъект из двух полей - { type: описывает, что произошло , payload: ?(optional) то, с чем был вызван этот action, данные с которыми произошло изменение }
+
+- Reducers - набор действий для выполнения при измении, то есть что должно произойти при action, обработка action. Только reducer может изменить состояние (!)
+
+- Dispatch - начинает цепочку обновления состояния 
+
+Последовательность выполнения
+Dispatch of action -> Reducer(Action) -> Store (изменение состояние) -> обновленный Store
+
+Reducer - чистая функция (грязная функция мутирует переменную за своими пределами)
+
+Сначала нужно установить библиотеки
+npm install redux react-redux redux-actions 
+
+install redux-devtools-extension as dev dependency
+
+create folder structure
+src -> new folder store -> configureStore.js , rootReducer.js 
+
+configureStore.js
