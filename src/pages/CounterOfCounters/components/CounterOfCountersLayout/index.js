@@ -41,7 +41,8 @@ CounterOfCountersLayout.propTypes = {
     })
   ).isRequired,
   handleCounterAdd: PropTypes.func.isRequired,
-  handleCounterRemove: PropTypes.func.isRequired,
+  handleCounterRemoveLast: PropTypes.func.isRequired,
+  handleCounterRemoveAny: PropTypes.func.isRequired,
   handleDeleteAll: PropTypes.func.isRequired,
 };
 

@@ -10,10 +10,7 @@ const Router = () => {
     <Routes>
       <Route path={ROUTE_NAMES.HOME} element={<HomeView />} />
       <Route path={ROUTE_NAMES.COUNTER} element={<CounterContainer />} />
-      <Route
-        path={ROUTE_NAMES.COUNTERS}
-        element={<CounterOfCountersContainer />}
-      />
+      <Route path={ROUTE_NAMES.COUNTERS} element={<CounterOfCountersContainer />} />
       <Route path="*" element={<Navigate to={ROUTE_NAMES.HOME} />} />
     </Routes>
   );

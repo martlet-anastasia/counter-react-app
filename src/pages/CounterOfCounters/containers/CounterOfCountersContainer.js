@@ -1,5 +1,6 @@
-import { useState, useCallback, useMemo } from "react";
 import { v4 as uuid } from "uuid";
+
+import { useState, useCallback, useMemo } from "react";
 import CounterOfCountersLayout from "../components/CounterOfCountersLayout";
 
 const CounterOfCountersContainer = () => {
@@ -9,49 +10,47 @@ const CounterOfCountersContainer = () => {
     setListOfCounters((state) => {
       const copy = [...state];
       // each of even value gets +1
-      copy.map((counter) => {
-        if (counter.value % 2 === 0) {
-          ++counter.value;
-        }
-        return counter;
+      const updatedState = copy.map((counter) => {
+        return {
+          ...counter,
+          value: counter.value % 2 === 0 ? counter.value + 1 : counter.value,
+        };
       });
       // add new element
       const newCounter = { id: uuid(), value: 0 };
-      copy.push(newCounter);
-      return copy;
+      return [...updatedState, newCounter];
     });
   }, []);
 
   const handleCounterRemoveLast = useCallback(() => {
     setListOfCounters((state) => {
       const copy = [...state];
+      copy.splice(-1);
       // each of odd value gets -1
-      copy.map((counter) => {
-        if (!(counter.value === 0 & counter.value % 2 === 0)) {
-            counter.value = counter.value - 1;
-        }
-        return counter;
+      const updatedState = copy.map((counter) => {
+        return {
+          ...counter,
+          value: counter.value % 2 === 0 ? counter.value : counter.value - 1,
+        };
       });
-      // delete last element
-      copy.pop();
-      return copy;
+      return updatedState;
     });
   }, []);
 
   const handleCounterRemoveAny = useCallback((id) => {
     setListOfCounters((state) => {
       const copy = [...state];
-      // each of odd value gets -1
-      copy.map((counter) => {
-        if (!(counter.value === 0 & counter.value % 2 === 0)) {
-            counter.value = counter.value - 1;
-        }
-        return counter;
-      });
       // delete selected element
       const counterIndexToDelete = copy.findIndex((counter) => counter.id === id);
       copy.splice(counterIndexToDelete, 1);
-      return copy;
+      // each of odd value gets -1
+      const updatedState = copy.map((counter) => {
+        return {
+          ...counter,
+          value: counter.value % 2 === 0 ? counter.value : counter.value - 1,
+        };
+      });
+      return updatedState;
     });
   }, []);
 
